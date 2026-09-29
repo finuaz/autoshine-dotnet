@@ -1,0 +1,35 @@
+## .NET
+**/bin/
+**/obj/
+**/.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## Rider / JetBrains
+.idea/
+*.DotSettings.user
+
+## Test / coverage
+TestResults/
+coverage/
+
+## Local configuration / secrets
+.env
+.env.*
+appsettings.Local.json
+appsettings.Development.local.json
+
+## OS
+.DS_Store
+Thumbs.db
+
+## Local database / generated files
+*.db
+*.sqlite
+*.sqlite3
+
+## Logs
+*.log
+logs/

@@ -1,0 +1,35 @@
+<Project>
+  <PropertyGroup>
+    <!-- AutoShine intentionally stays on .NET 9 to stay aligned with Repo 1 and the chosen MySQL provider. -->
+    <TargetFramework>net9.0</TargetFramework>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- EF Core / MySQL -->
+    <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="9.0.20" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.20" />
+    <PackageVersion Include="Pomelo.EntityFrameworkCore.MySql" Version="9.0.0" />
+
+    <!-- Reporting / data access -->
+    <PackageVersion Include="Dapper" Version="2.1.89" />
+
+    <!-- Validation -->
+    <PackageVersion Include="FluentValidation" Version="12.1.1" />
+    <PackageVersion Include="FluentValidation.DependencyInjectionExtensions" Version="12.1.1" />
+
+    <!-- Entity ↔ DTO mapping -->
+    <PackageVersion Include="DSeries.DMapper.Core" Version="2.4.0" />
+
+    <!-- Messaging -->
+    <PackageVersion Include="RabbitMQ.Client" Version="7.2.2" />
+
+    <!-- Telerik licensing is public; the main Telerik UI package is distributed through Telerik's private feed. -->
+    <PackageVersion Include="Telerik.Licensing" Version="1.9.2" />
+
+    <!-- Testing -->
+    <PackageVersion Include="xunit" Version="2.9.3" />
+    <PackageVersion Include="xunit.runner.visualstudio" Version="4.0.0" />
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="18.10.1" />
+  </ItemGroup>
+</Project>

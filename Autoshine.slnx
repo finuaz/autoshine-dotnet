@@ -1,2 +1,5 @@
 <Solution>
+  <Folder Name="/src/">
+    <Project Path="src/AutoShine.Web/AutoShine.Web.csproj" />
+  </Folder>
 </Solution>

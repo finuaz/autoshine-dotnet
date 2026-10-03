@@ -33,3 +33,36 @@ Thumbs.db
 ## Logs
 *.log
 logs/
+
+## Visual Studio
+.vs/
+.vscode/
+*.code-workspace
+
+## Build outputs
+publish/
+PublishProfiles/
+
+## NuGet
+*.nuget.props
+*.nuget.targets
+global.json
+
+## Miscellaneous
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+## Application Insights
+ApplicationInsights.config
+
+## User-specific settings
+launchSettings.json.user

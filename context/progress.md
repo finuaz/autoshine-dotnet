@@ -99,6 +99,19 @@ EF Core DbContext configuration and initial migration created:
 
 The application is now ready for domain entity modeling and data access patterns.
 
+#### Step 5
+Completed.
+
+Domain entity models and CRUD scaffolding implemented:
+
+- **Domain Models**: Created `Customer`, `Vehicle`, `MembershipPlan`, `CustomerMembership`, `Service`, `Booking`, `BookingItem`, and `Payment` classes in `/Models`.
+- **ApplicationDbContext**: Added DbSet properties for all domain entities.
+- **CustomersController**: Implemented with dependency injection of `ApplicationDbContext` and `Index()` action returning customer list.
+- **Customers/Index.cshtml**: Created view template with table display of customer data (Name, PhoneNumber, Email, CreatedAt).
+- **Database Migration**: Applied `dotnet ef database update` to create schema in MySQL.
+
+The application now has a working CRUD read operation for customers with a functional view layer.
+
 ## Important Boundary
 
 Do **not** jump to the final architecture yet.
@@ -153,17 +166,19 @@ Cycle 1
   Step 2 ✅
   Step 3 ✅
   Step 4 ✅
-  Step 5 ⬅ next (Define domain entity models & apply migration)
+  Step 5 ✅
+  Step 6 ⬅ next (Implement CRUD operations for Bookings & Services)
 ```
 
 **Last known terminal action:**
 
 ```powershell
-dotnet ef migrations add InitialCreate
+dotnet ef database update
 ```
 
 **Last known structural action:**
 
-- `appsettings.json` fixed with proper `ConnectionStrings` key structure
-- `appsettings.Development.json` configured with MySQL credentials (development-only)
-- Initial migration created and ready for customization with domain models
+- Domain models defined with proper relationships (Customer, Vehicle, MembershipPlan, Service, Booking, BookingItem, Payment)
+- CustomersController implemented with Index view
+- Database migrated and schema created in MySQL
+- Customers list view functional and ready for CRUD expansion

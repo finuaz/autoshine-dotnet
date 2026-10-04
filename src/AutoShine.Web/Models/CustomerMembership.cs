@@ -1,5 +1,3 @@
-using Autoshine.Web.Models;
-
 namespace AutoShine.Web.Models;
 
 public class CustomerMembership

@@ -1,6 +1,4 @@
-using AutoShine.Web.Models;
-
-namespace Autoshine.Web.Models;
+namespace AutoShine.Web.Models;
 
 public class MembershipPlan
 {

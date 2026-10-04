@@ -87,6 +87,18 @@ Project structural fixes applied:
 
 Project now compiles cleanly with no validation errors on `using AutoShine.Web.Data;`.
 
+#### Step 4
+Completed.
+
+EF Core DbContext configuration and initial migration created:
+
+- **appsettings.json**: Fixed malformed `ConnectionStrings` object, added `"DefaultConnection"` key name.
+- **appsettings.Development.json**: Added connection string with database password (kept out of source control via `.gitignore`).
+- **ApplicationDbContext**: Verified DbContext dependency injection is properly wired in `Program.cs`.
+- **Initial Migration**: Successfully ran `dotnet ef migrations add InitialCreate` to generate the baseline migration schema.
+
+The application is now ready for domain entity modeling and data access patterns.
+
 ## Important Boundary
 
 Do **not** jump to the final architecture yet.
@@ -140,16 +152,18 @@ Cycle 1
   Step 1 ✅
   Step 2 ✅
   Step 3 ✅
-  Step 4 ⬅ next (Define domain models & initial migration)
+  Step 4 ✅
+  Step 5 ⬅ next (Define domain entity models & apply migration)
 ```
 
 **Last known terminal action:**
 
-Fixed duplicate code in `Program.cs` and namespace mismatch in `ApplicationDbContext.cs`.
+```powershell
+dotnet ef migrations add InitialCreate
+```
 
 **Last known structural action:**
 
-- `.gitignore` enhanced with production-grade entries
-- `Program.cs` reorganized (DbContext registration before service setup)
-- `ApplicationDbContext.cs` namespace corrected (`AutoShine.Web.Data`)
-- Project now compiles cleanly
+- `appsettings.json` fixed with proper `ConnectionStrings` key structure
+- `appsettings.Development.json` configured with MySQL credentials (development-only)
+- Initial migration created and ready for customization with domain models

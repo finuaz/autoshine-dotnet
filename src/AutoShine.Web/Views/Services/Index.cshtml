@@ -1,0 +1,36 @@
+﻿@model IEnumerable<AutoShine.Web.Models.Service>
+
+@{
+    ViewData["title"] = "Services";
+}
+
+<h1>Services</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Estimated Minutes</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var service in Model)
+        {
+            <tr>
+                <td>@service.Name</td>
+                <td>@service.Description</td>
+                <td>@service.CurrentPrice.ToString("N2")</td>
+                <td>@service.EstimatedMinutes</td>
+                <td>@(service.IsActive ? "Active" : "Inactive")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if (!Model.Any())
+{
+    <p>No services available.</p>
+}

@@ -6,8 +6,8 @@
 ## Current Position
 
 **Current cycle:** Cycle 1 — Single-project CRUD foundation  
-**Current step:** Step 3 — completed  
-**Next:** Cycle 1 — Step 4.
+**Current step:** Step 6 — in progress  
+**Next:** Complete CRUD operations for Bookings & Services.
 
 ## Project State
 
@@ -112,6 +112,13 @@ Domain entity models and CRUD scaffolding implemented:
 
 The application now has a working CRUD read operation for customers with a functional view layer.
 
+#### Step 6
+In progress.
+
+- **ServicesController**: Added an `Index()` action that loads services ordered by name and returns them to the view.
+- **Build fix**: Made `ServicesController` inherit from `Controller`, enabling its `View(services)` call.
+- **Validation**: `dotnet build` succeeds for `AutoShine.Web` targeting .NET 10.
+
 ## Important Boundary
 
 Do **not** jump to the final architecture yet.
@@ -167,18 +174,19 @@ Cycle 1
   Step 3 ✅
   Step 4 ✅
   Step 5 ✅
-  Step 6 ⬅ next (Implement CRUD operations for Bookings & Services)
+	Step 6 ⬅ in progress (Implement CRUD operations for Bookings & Services)
 ```
 
 **Last known terminal action:**
 
 ```powershell
-dotnet ef database update
+dotnet build
 ```
 
 **Last known structural action:**
 
 - Domain models defined with proper relationships (Customer, Vehicle, MembershipPlan, Service, Booking, BookingItem, Payment)
 - CustomersController implemented with Index view
+- ServicesController Index action implemented; controller inheritance fixed and build verified
 - Database migrated and schema created in MySQL
 - Customers list view functional and ready for CRUD expansion

@@ -6,8 +6,8 @@
 ## Current Position
 
 **Current cycle:** Cycle 1 — Single-project CRUD foundation  
-**Current step:** Step 6.2 — Create Service (in progress)  
-**Next:** Step 6.3 — Edit and deactivate Service, retaining service history.
+**Current step:** Step 6.3 — Edit and deactivate Service (in progress)  
+**Next:** Step 6.4 — Booking CRUD.
 
 ## Project State
 
@@ -116,8 +116,8 @@ The application now has a working CRUD read operation for customers with a funct
 In progress.
 
 - **6.1 — List Services**: Completed. `ServicesController.Index()` loads services ordered by name and returns them to the view.
-- **6.2 — Create Service**: Current substep; implementation and verification are still in progress. The controller and Create view already contain a basic create flow.
-- **6.3 — Edit and deactivate Service**: Next; retain service history rather than deleting records.
+- **6.2 — Create Service**: Completed. The controller and Create view contain the basic create flow.
+- **6.3 — Edit and deactivate Service**: Current substep; retain service history rather than deleting records.
 - **6.4 — Booking CRUD**: Follows the service catalog basics.
 
 ## Important Boundary
@@ -177,8 +177,8 @@ Cycle 1
   Step 5 ✅
   Step 6
 	6.1 ✅ List Services
-	6.2 ⬅ in progress (Create Service)
-	6.3 Next (Edit and deactivate Service)
+	6.2 ✅ Create Service
+	6.3 ⬅ in progress (Edit and deactivate Service)
 	6.4 Later (Booking CRUD)
 ```
 

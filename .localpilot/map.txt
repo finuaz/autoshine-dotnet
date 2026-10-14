@@ -1,0 +1,89 @@
+## WORKSPACE EXECUTIVE SUMMARY (YAML)
+# Generated: 2026-10-15T05:58:15.9844794+07:00
+# Root: C:\Users\imans\source\repos\finuaz\autoshine-dotnet
+Architecture:
+  Type: Backend (C#/.NET)
+  Scale: 39 relevant source files
+  Components: 0
+  Controllers: 3
+  Models: 13
+  Services: 1
+---
+- File: src\AutoShine.Web\AutoShine.Web.csproj
+  Preview: "<Project Sdk='Microsoft.NET.Sdk.Web'>  <PropertyGroup>   <TargetFramework>net10.0</TargetFramework>   <Nullable>enable</Nullable>   <ImplicitUsings>en..."
+- File: Autoshine.slnx
+  Preview: "<Solution>  <Folder Name='/src/'>   <Project Path='src/AutoShine.Web/AutoShine.Web.csproj' />  </Folder> </Solution> "
+- File: README.md
+  Preview: "# AutoShine A small enterprise-style car cleaning and detailing management system built as a learning project for C#/.NET architecture. > **Important:..."
+- File: START-HERE.md
+  Preview: "# AutoShine Repo 2 — Start Here This repository intentionally starts as **documentation first**. Do not implement application code until the documente..."
+- File: .github\copilot-instructions.md
+  Preview: "# Copilot Instructions ## Project Guidelines - When the user says to update progress/context, only update the progress/context file unless they explic..."
+- File: context\api.md
+  Preview: "# AutoShine API Context The API is the boundary between the Web UI and application services. ## Principles - HTTP concerns live in API controllers. - ..."
+- File: context\architecture.md
+  Preview: "# AutoShine Architecture ## 1. Architectural style AutoShine is a **single business system implemented as a multi-project .NET solution with a separat..."
+- File: context\business-rules.md
+  Preview: "# AutoShine Business Rules This file is the business guardrail. Code must implement these rules rather than inventing new behavior ad hoc. ## 1. Custo..."
+- File: context\cycles.md
+  Preview: "# AutoShine Implementation Cycles AutoShine must be built in several cycles. Do not implement the final architecture in one pass. ## Cycle 0 — Design/..."
+- File: context\dashboard.md
+  Preview: "# AutoShine Dashboard Context The dashboard is intended for staff/management and answers operational questions, not merely database-count questions. #..."
+- File: context\database.md
+  Preview: "# AutoShine Database Model Database: MySQL EF Core is the primary persistence technology. Dapper is used for selected read/reporting queries. ## Core ..."
+- File: context\development-roadmap.md
+  Preview: "# AutoShine Development Roadmap & Learning Context > **Purpose:** This is the operational roadmap for the AutoShine learning project. > > It exists so..."
+- File: context\development-rules.md
+  Preview: "# AutoShine Development Rules ## 1. Learning over speed The project exists to strengthen practical C#/.NET understanding. Do not hide important concep..."
+- File: context\messaging.md
+  Preview: "# AutoShine Messaging Context RabbitMQ is included to teach asynchronous communication and background processing. It is not a replacement for MySQL an..."
+- File: context\progress.md
+  Preview: "# AutoShine Progress Context > This file is a progress checkpoint for the AutoShine learning project. > Update it after each meaningful implementation..."
+- File: src\AutoShine.Web\appsettings.Development.json
+  Preview: "{  'Logging': {   'LogLevel': {    'Default': 'Information',    'Microsoft.AspNetCore': 'Warning'   }  },  'ConnectionStrings': {   'DefaultConnection..."
+- File: src\AutoShine.Web\appsettings.json
+  Preview: "{  'Logging': {   'LogLevel': {    'Default': 'Information',    'Microsoft.AspNetCore': 'Warning'   }  },  'AllowedHosts': '*',  'ConnectionStrings': ..."
+- File: src\AutoShine.Web\Program.cs
+  Preview: "using AutoShine.Web.Data; using Microsoft.EntityFrameworkCore; var builder = WebApplication.CreateBuilder(args); // Add services to the container. var..."
+- File: src\AutoShine.Web\Controllers\CustomersController.cs
+  Preview: "using AutoShine.Web.Models; using AutoShine.Web.Data; using Microsoft.AspNetCore.Mvc; using Microsoft.EntityFrameworkCore; namespace AutoShine.Web.Con..."
+- File: src\AutoShine.Web\Controllers\HomeController.cs
+  Preview: "using System.Diagnostics; using Microsoft.AspNetCore.Mvc; using AutoShine.Web.Models; namespace AutoShine.Web.Controllers; public class HomeController..."
+- File: src\AutoShine.Web\Controllers\ServicesController.cs
+  Preview: "using AutoShine.Web.Data; using AutoShine.Web.Models; using Microsoft.AspNetCore.Mvc; using Microsoft.EntityFrameworkCore; namespace AutoShine.Web.Con..."
+- File: src\AutoShine.Web\Data\ApplicationDbContext.cs
+  Preview: "using AutoShine.Web.Models; using Microsoft.EntityFrameworkCore; namespace AutoShine.Web.Data; public class ApplicationDbContext : DbContext {   publi..."
+- File: src\AutoShine.Web\Migrations\20261004092633_InitialCreate.cs
+  Preview: "using System; using Microsoft.EntityFrameworkCore.Metadata; using Microsoft.EntityFrameworkCore.Migrations; #nullable disable namespace AutoShine.Web...."
+- File: src\AutoShine.Web\Migrations\20261004092633_InitialCreate.Designer.cs
+  Preview: "// <auto-generated /> using System; using AutoShine.Web.Data; using Microsoft.EntityFrameworkCore; using Microsoft.EntityFrameworkCore.Infrastructure;..."
+- File: src\AutoShine.Web\Migrations\ApplicationDbContextModelSnapshot.cs
+  Preview: "// <auto-generated /> using System; using AutoShine.Web.Data; using Microsoft.EntityFrameworkCore; using Microsoft.EntityFrameworkCore.Infrastructure;..."
+- File: src\AutoShine.Web\Models\Booking.cs
+  Preview: "using AutoShine.Web.Models.Enums; namespace AutoShine.Web.Models; public class Booking {   public int Id { get; set; }   public int VehicleId { get; s..."
+- File: src\AutoShine.Web\Models\BookingItem.cs
+  Preview: "namespace AutoShine.Web.Models; public class BookingItem {   public int Id { get; set; }   public int BookingId { get; set; }   public int ServiceId {..."
+- File: src\AutoShine.Web\Models\BookingStatusHistory.cs
+  Preview: "using AutoShine.Web.Models.Enums; namespace AutoShine.Web.Models; public class BookingStatusHistory {   public int Id { get; set; }   public int Booki..."
+- File: src\AutoShine.Web\Models\Customer.cs
+  Preview: "namespace AutoShine.Web.Models; public class Customer {   public int Id { get; set; }   public string Name { get; set; } = string.Empty;   public stri..."
+- File: src\AutoShine.Web\Models\CustomerMembership.cs
+  Preview: "namespace AutoShine.Web.Models; public class CustomerMembership {   public int Id { get; set; }   public int CustomerId { get; set; }   public int Mem..."
+- File: src\AutoShine.Web\Models\ErrorViewModel.cs
+  Preview: "namespace AutoShine.Web.Models; public class ErrorViewModel {   public string? RequestId { get; set; }   public bool ShowRequestId => !string.IsNullOr..."
+- File: src\AutoShine.Web\Models\MembershipPlan.cs
+  Preview: "namespace AutoShine.Web.Models; public class MembershipPlan {   public int Id { get; set; }   public string Name { get; set; } = string.Empty;   publi..."
+- File: src\AutoShine.Web\Models\Payment.cs
+  Preview: "namespace AutoShine.Web.Models; public class Payment {   public int Id { get; set; }   public int BookingId { get; set; }   public decimal Amount { ge..."
+- File: src\AutoShine.Web\Models\Service.cs
+  Preview: "using AutoShine.Web.Models.Enums; using System.ComponentModel.DataAnnotations; namespace AutoShine.Web.Models; public class Service {   public int Id ..."
+- File: src\AutoShine.Web\Models\Vehicle.cs
+  Preview: "namespace AutoShine.Web.Models; public class Vehicle {   public int Id { get; set; }   public int CustomerId { get; set; }   public string PlateNumber..."
+- File: src\AutoShine.Web\Properties\launchSettings.json
+  Preview: "{  '$schema': 'https://json.schemastore.org/launchsettings.json',  'profiles': {   'http': {    'commandName': 'Project',    'dotnetRunMessages': true..."
+- File: src\AutoShine.Web\Models\Enums\BookingStatus.cs
+  Preview: "namespace AutoShine.Web.Models.Enums; public enum BookingStatus {   Booked,   Waiting,   Washing,   Cleaning,   AdditionalTreatment,   Review,   Payme..."
+- File: src\AutoShine.Web\Models\Enums\PaymentStatus.cs
+  Preview: "namespace AutoShine.Web.Models.Enums; public enum PaymentStatus {   Unpaid,   PartiallyPaid,   Paid,   Refunded }"
+- File: src\AutoShine.Web\Models\Enums\ServiceType.cs
+  Preview: "namespace AutoShine.Web.Models.Enums; public enum ServiceType {   Cleaning,   AdditionalTreatment,   BasicWash,   PremiumWash,   InteriorCleaning,   E..."

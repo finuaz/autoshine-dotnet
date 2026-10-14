@@ -42,7 +42,7 @@ namespace AutoShine.Web.Controllers
 
             return RedirectToAction(nameof(Index));
         }
-        
+
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -56,7 +56,7 @@ namespace AutoShine.Web.Controllers
             }
             return View(service);
         }
-        
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,Type,CurrentPrice,EstimatedMinutes,IsActive")] Service submittedService)
@@ -87,6 +87,35 @@ namespace AutoShine.Web.Controllers
             await _context.SaveChangesAsync();
 
             return RedirectToAction(nameof(Index));
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Deactivate(int id)
+        {
+            var service = await _context.Services.FindAsync(id);
+            if (service == null)
+            {
+                return NotFound();
+            }
+            service.IsActive = false;
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Reactivate(int id)
+        {
+            var service = await _context.Services.FindAsync(id);
+            if (service == null)
+            {
+                return NotFound();
+            }
+            service.IsActive = true;
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+
         }
     }
 }

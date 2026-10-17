@@ -14,13 +14,14 @@
             <th>Price</th>
             <th>Estimated Minutes</th>
             <th>Status</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
         <a asp-action="Create" class="btn btn-primary mb-3">
             Create New Service
         </a>    
-        
+
         @foreach (var service in Model)
         {
             <tr>
@@ -29,6 +30,40 @@
                 <td>@service.CurrentPrice.ToString("N2")</td>
                 <td>@service.EstimatedMinutes</td>
                 <td>@(service.IsActive ? "Active" : "Inactive")</td>
+                <td>
+                    <a asp-action="Edit"
+                       asp-route-id="@service.Id"
+                       class="btn btn-sm btn-primary">
+                        Edit
+                    </a>
+
+                    @if (service.IsActive)
+                    {
+                        <form asp-action="Deactivate"
+                              asp-route-id="@service.Id"
+                              method="post"
+                              class="d-inline">
+
+                            <button type="submit"
+                                    class="btn btn-sm btn-outline-danger">
+                                Deactivate
+                            </button>
+                        </form>
+                    }
+                    else
+                    {
+                        <form asp-action="Reactivate"
+                              asp-route-id="@service.Id"
+                              method="post"
+                              class="d-inline">
+
+                            <button type="submit"
+                                    class="btn btn-sm btn-outline-success">
+                                Reactivate
+                            </button>
+                        </form>
+                    }
+                </td>
             </tr>
         }
     </tbody>

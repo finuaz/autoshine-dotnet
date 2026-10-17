@@ -1,0 +1,43 @@
+﻿@model IEnumerable<AutoShine.Web.Models.Booking>
+
+@{
+    ViewData["Title"] = "Bookings";
+}
+
+<h1>Bookings</h1>
+
+<a asp-action="Create" class="btn btn-primary mb-3">
+    Create Booking
+</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Booking ID</th>
+            <th>Vehicle</th>
+            <th>Scheduled At</th>
+            <th>Booking Status</th>
+            <th>Payment Status</th>
+            <th>Total Amount</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var booking in Model)
+        {
+            <tr>
+                <td>@booking.Id</td>
+                <td>@booking.Vehicle.PlateNumber</td>
+                <td>@booking.ScheduledAt.ToString("dd MMM yyyy HH:mm")</td>
+                <td>@booking.Status</td>
+                <td>@booking.PaymentStatus</td>
+                <td>@booking.TotalAmount.ToString("N2")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if (!Model.Any())
+{
+    <p>No bookings have been created yet.</p>
+}

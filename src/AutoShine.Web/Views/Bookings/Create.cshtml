@@ -1,0 +1,83 @@
+﻿@model AutoShine.Web.ViewModels.CreateBookingViewModel
+
+@{
+    ViewData["Title"] = "Create Booking";
+}
+
+<h1>Create Booking</h1>
+
+<form asp-action="Create" method="post">
+
+    <div asp-validation-summary="ModelOnly"
+         class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="VehicleId" class="form-label">
+            Vehicle
+        </label>
+
+        <select asp-for="VehicleId"
+                asp-items="Model.Vehicles"
+                class="form-select">
+            <option value="0">-- Select a vehicle --</option>
+        </select>
+
+        <span asp-validation-for="VehicleId"
+              class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="ScheduledAt" class="form-label">
+            Scheduled Date and Time
+        </label>
+
+        <input asp-for="ScheduledAt"
+               type="datetime-local"
+               class="form-control" />
+
+        <span asp-validation-for="ScheduledAt"
+              class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="ServiceId" class="form-label">
+            Service
+        </label>
+
+        <select asp-for="ServiceId"
+                asp-items="Model.Services"
+                class="form-select">
+            <option value="0">-- Select a service --</option>
+        </select>
+
+        <span asp-validation-for="ServiceId"
+              class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Quantity" class="form-label">
+            Quantity
+        </label>
+
+        <input asp-for="Quantity"
+               type="number"
+               min="1"
+               max="100"
+               class="form-control" />
+
+        <span asp-validation-for="Quantity"
+              class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        Create Booking
+    </button>
+
+    <a asp-action="Index" class="btn btn-secondary">
+        Cancel
+    </a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

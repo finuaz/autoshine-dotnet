@@ -87,6 +87,16 @@ namespace AutoShine.Web.Migrations
                     b.Property<int>("ServiceId")
                         .HasColumnType("int");
 
+                    b.Property<string>("ServiceNameSnapshot")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("ServiceTypeSnapshot")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("Total")
+                        .HasColumnType("decimal(65,30)");
+
                     b.Property<decimal>("UnitPrice")
                         .HasColumnType("decimal(65,30)");
 

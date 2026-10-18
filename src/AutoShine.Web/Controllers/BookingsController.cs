@@ -125,4 +125,26 @@ public class BookingsController : Controller
             })
             .ToList();
     }
+
+    public async Task<IActionResult> Details(int? id)
+    {
+        if (id == null)
+        {
+            return NotFound();
+        }
+        
+        var booking = await _context.Bookings
+            .AsNoTracking()
+            .Include(b => b.Vehicle)
+                .ThenInclude(v => v.Customer)
+            .Include(b => b.BookingItems)
+            .FirstOrDefaultAsync(b => b.Id == id);
+
+        if (booking == null)
+        {
+            return NotFound();
+        }
+
+        return View(booking);
+    }
 }

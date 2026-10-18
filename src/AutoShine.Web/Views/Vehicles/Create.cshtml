@@ -1,0 +1,84 @@
+﻿@model AutoShine.Web.Models.Vehicle
+
+@{
+    ViewData["Title"] = "Create Vehicle";
+}
+
+<h1>Create Vehicle</h1>
+
+@if (!(bool)ViewBag.HasCustomers)
+{
+    <div class="alert alert-warning">
+        You need to create a customer before adding a vehicle.
+
+        <a asp-controller="Customers"
+           asp-action="Create">
+            Create Customer
+        </a>
+    </div>
+}
+
+<form asp-action="Create" method="post">
+
+    <div asp-validation-summary="ModelOnly"
+         class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="CustomerId" class="form-label">
+            Customer
+        </label>
+
+        <select asp-for="CustomerId"
+                asp-items="ViewBag.Customers"
+                class="form-select">
+            <option value="0">-- Select a customer --</option>
+        </select>
+
+        <span asp-validation-for="CustomerId"
+              class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="PlateNumber" class="form-label"></label>
+        <input asp-for="PlateNumber" class="form-control" />
+        <span asp-validation-for="PlateNumber"
+              class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Brand" class="form-label"></label>
+        <input asp-for="Brand" class="form-control" />
+        <span asp-validation-for="Brand"
+              class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Model" class="form-label"></label>
+        <input asp-for="Model" class="form-control" />
+        <span asp-validation-for="Model"
+              class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Year" class="form-label"></label>
+        <input asp-for="Year"
+               type="number"
+               class="form-control" />
+        <span asp-validation-for="Year"
+              class="text-danger"></span>
+    </div>
+
+    <button type="submit"
+            class="btn btn-primary"
+            disabled="@(!(bool)ViewBag.HasCustomers)">
+        Save Vehicle
+    </button>
+
+    <a asp-action="Index" class="btn btn-secondary">
+        Cancel
+    </a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -6,12 +6,12 @@
 ## Current Position
 
 **Current cycle:** Cycle 1 — Single-project CRUD foundation  
-**Current step:** Step 6.3 — Edit and deactivate Service (in progress)  
-**Next:** Step 6.4 — Booking CRUD.
+**Current step:** Step 6 — Booking and Service CRUD (in progress)  
+**Next:** Finish the Service edit flow, then continue Booking CRUD.
 
 ## Project State
 
-The project currently uses a **single ASP.NET Core MVC/Web project**:
+The project currently targets **.NET 10** and uses a **single ASP.NET Core MVC/Web project**:
 
 ```text
 AutoShine/
@@ -19,13 +19,16 @@ AutoShine/
 ├── src/
 │   └── AutoShine.Web/
 │       ├── Controllers/
+│       ├── Data/
+│       ├── Migrations/
 │       ├── Models/
+│       ├── ViewModels/
 │       ├── Views/
 │       ├── Properties/
 │       ├── wwwroot/
 │       ├── appsettings.Development.json
 │       └── ...
-└── AutoShine.sln
+└── AutoShine.slnx
 ```
 
 The current Visual Studio Solution Explorer shows the standard MVC project structure with:
@@ -70,10 +73,10 @@ The `AutoShine.Web.csproj` project was also registered in the solution.
 Equivalent command:
 
 ```powershell
-dotnet sln AutoShine.sln add src/AutoShine.Web/AutoShine.Web.csproj
+dotnet sln AutoShine.slnx add src/AutoShine.Web/AutoShine.Web.csproj
 ```
 
-This is correct: the `.csproj` is the project file, while `.sln` is the solution container that references the project.
+This is correct: the `.csproj` is the project file, while `.slnx` is the solution container that references the project.
 
 #### Step 3
 Completed.
@@ -115,10 +118,10 @@ The application now has a working CRUD read operation for customers with a funct
 #### Step 6
 In progress.
 
-- **6.1 — List Services**: Completed. `ServicesController.Index()` loads services ordered by name and returns them to the view.
-- **6.2 — Create Service**: Completed. The controller and Create view contain the basic create flow.
-- **6.3 — Edit and deactivate Service**: Current substep; retain service history rather than deleting records.
-- **6.4 — Booking CRUD**: Follows the service catalog basics.
+- **6.1 — List Services**: Implemented. `ServicesController.Index()` loads services ordered by name and returns them to the view.
+- **6.2 — Create Service**: Implemented. The controller and Create view contain the basic create flow.
+- **6.3 — Edit and deactivate Service**: Partially implemented. The controller has Edit, Deactivate, and Reactivate actions, and the service list exposes those actions. The Edit view currently only exposes the Name field; complete and verify the edit form before marking this substep done. Services are deactivated rather than deleted to retain history.
+- **6.4 — Booking CRUD**: Started. Booking list and create actions/views plus `CreateBookingViewModel` exist. The create flow currently supports selecting a vehicle and active service, scheduling, quantity, and creating a booking item with service snapshots. This is not yet complete Booking CRUD.
 
 ## Important Boundary
 
@@ -178,11 +181,11 @@ Cycle 1
   Step 6
 	6.1 ✅ List Services
 	6.2 ✅ Create Service
-	6.3 ⬅ in progress (Edit and deactivate Service)
-	6.4 Later (Booking CRUD)
+6.3 ⬅ in progress (complete and verify Edit form; deactivate/reactivate actions exist)
+6.4 Started (Booking list/create exist; continue remaining Booking CRUD)
 ```
 
-**Last known terminal action:**
+**Last recorded terminal command (result not recorded):**
 
 ```powershell
 dotnet build
@@ -192,6 +195,7 @@ dotnet build
 
 - Domain models defined with proper relationships (Customer, Vehicle, MembershipPlan, Service, Booking, BookingItem, Payment)
 - CustomersController implemented with Index view
-- ServicesController Index action implemented; controller inheritance fixed and build verified
+- ServicesController list/create/edit/deactivate/reactivate actions implemented; service Edit view is incomplete
+- BookingsController list/create flow and corresponding views implemented; Booking CRUD remains in progress
 - Database migrated and schema created in MySQL
 - Customers list view functional and ready for CRUD expansion

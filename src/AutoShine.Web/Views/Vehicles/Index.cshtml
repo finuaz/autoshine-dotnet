@@ -1,0 +1,41 @@
+﻿@model IEnumerable<AutoShine.Web.Models.Vehicle>
+
+@{
+    ViewData["Title"] = "Vehicles";
+}
+
+<h1>Vehicles</h1>
+
+<a asp-action="Create" class="btn btn-primary mb-3">
+    Create Vehicle
+</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Plate Number</th>
+            <th>Brand</th>
+            <th>Model</th>
+            <th>Year</th>
+            <th>Customer</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var vehicle in Model)
+        {
+            <tr>
+                <td>@vehicle.PlateNumber</td>
+                <td>@vehicle.Brand</td>
+                <td>@vehicle.Model</td>
+                <td>@vehicle.Year</td>
+                <td>@vehicle.Customer.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if (!Model.Any())
+{
+    <p>No vehicles have been registered yet.</p>
+}

@@ -1,0 +1,84 @@
+﻿@Model.Autoshine.Web.Models.Booking
+
+@{
+    ViewData["Title"] = "Booking Details";
+}
+
+<h1>Booking Details</h1>
+
+<h2>Booking Information</h2>
+
+<dl class="row">
+    <dt class="col-sm-3">Customer</dt>
+    <dd class="col-sm-9">@Model.Vehicle.Customer.Name</dd>
+
+    <dt class="col-sm-3">Vehicle</dt>
+    <dd class="col-sm-9">
+        @Model.Vehicle.PlateNumber
+        - @Model.Vehicle.Brand @Model.Vehicle.Model
+    </dd>
+
+    <dt class="col-sm-3">Scheduled At</dt>
+    <dd class="col-sm-9">
+        @Model.ScheduledAt.ToString("dd MMM yyyy HH:mm")
+    </dd>
+
+    <dt class="col-sm-3">Booking Status</dt>
+    <dd class="col-sm-9">@Model.Status</dd>
+
+    <dt class="col-sm-3">Payment Status</dt>
+    <dd class="col-sm-9">@Model.PaymentStatus</dd>
+
+    <dt class="col-sm-3">Membership Snapshot</dt>
+    <dd class="col-sm-9">
+        @(Model.MembershipTypeSnapshot ?? "Non-member")
+    </dd>
+</dl>
+
+<h2>Services</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Service</th>
+            <th>Type</th>
+            <th>Unit Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.BookingItems)
+        {
+            <tr>
+                <td>@item.ServiceNameSnapshot</td>
+                <td>@item.ServiceTypeSnapshot</td>
+                <td>@item.UnitPrice.ToString("N2")</td>
+                <td>@item.Quantity</td>
+                <td>@item.Total.ToString("N2")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h2>Financial Summary</h2>
+
+<dl class="row">
+    <dt class="col-sm-3">Subtotal</dt>
+    <dd class="col-sm-9">@Model.Subtotal.ToString("N2")</dd>
+
+    <dt class="col-sm-3">Discount</dt>
+    <dd class="col-sm-9">@Model.DiscountAmount.ToString("N2")</dd>
+
+    <dt class="col-sm-3">Total</dt>
+    <dd class="col-sm-9">@Model.TotalAmount.ToString("N2")</dd>
+
+    <dt class="col-sm-3">Required Deposit</dt>
+    <dd class="col-sm-9">
+        @Model.RequiredDepositPercentage.ToString("N2")%
+    </dd>
+</dl>
+
+<a asp-action="Index" class="btn btn-secondary">
+    Back to Bookings
+</a>

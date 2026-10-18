@@ -19,6 +19,7 @@
             <th>Booking Status</th>
             <th>Payment Status</th>
             <th>Total Amount</th>
+            <th>Actions</th>
         </tr>
     </thead>
 
@@ -32,6 +33,9 @@
                 <td>@booking.Status</td>
                 <td>@booking.PaymentStatus</td>
                 <td>@booking.TotalAmount.ToString("N2")</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@booking.Id" class="btn btn-info btn-sm">Details</a>
+                </td>
             </tr>
         }
     </tbody>

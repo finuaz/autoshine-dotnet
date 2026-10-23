@@ -9,6 +9,6 @@ public class Vehicle
     public string Model { get; set; } = string.Empty;
     public int? Year { get; set; }
 
-    public Customer Customer { get; set; } = null!;
+    public Customer? Customer { get; set; }
     public ICollection<Booking> Bookings { get; set; } = new List<Booking>();
 }

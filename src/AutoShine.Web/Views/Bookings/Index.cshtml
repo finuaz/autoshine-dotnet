@@ -35,7 +35,17 @@
                 <td>@booking.TotalAmount.ToString("N2")</td>
                 <td>
                     <a asp-action="Details" asp-route-id="@booking.Id" class="btn btn-info btn-sm">Details</a>
+                    @if (booking.Status ==
+       AutoShine.Web.Models.Enums.BookingStatus.Booked)
+                    {
+                        <a asp-action="Edit"
+                           asp-route-id="@booking.Id"
+                           class="btn btn-sm btn-secondary">
+                            Reschedule
+                        </a>
+                    }
                 </td>
+
             </tr>
         }
     </tbody>

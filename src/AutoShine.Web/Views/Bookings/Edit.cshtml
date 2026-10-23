@@ -1,0 +1,50 @@
+﻿@model AutoShine.Web.ViewModels.EditBookingViewModel
+
+@{
+    ViewData["Title"] = $"Reschedule Booking #{Model.Id}";
+}
+
+<h1>Reschedule Booking #@Model.Id</h1>
+
+<p>
+    Only the scheduled date and time can be changed here.
+</p>
+
+<form asp-action="Edit"
+      asp-route-id="@Model.Id"
+      method="post">
+
+    <input type="hidden" asp-for="Id" />
+
+    <div asp-validation-summary="All"
+         class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="ScheduledAt"
+               class="form-label">
+            Scheduled Date and Time
+        </label>
+
+        <input asp-for="ScheduledAt"
+               type="datetime-local"
+               class="form-control" />
+
+        <span asp-validation-for="ScheduledAt"
+              class="text-danger"></span>
+    </div>
+
+    <button type="submit"
+            class="btn btn-primary">
+        Save Changes
+    </button>
+
+    <a asp-action="Details"
+       asp-route-id="@Model.Id"
+       class="btn btn-secondary">
+        Cancel
+    </a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

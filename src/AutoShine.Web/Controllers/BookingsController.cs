@@ -147,4 +147,82 @@ public class BookingsController : Controller
 
         return View(booking);
     }
+
+    public async Task<IActionResult> Edit(int? id)
+    {
+        if (id == null)
+        {
+            return NotFound();
+        }
+
+        var booking = await _context.Bookings
+            .AsNoTracking()
+            .FirstOrDefaultAsync(b => b.Id == id);
+
+        if (booking == null)
+        {
+            return NotFound();
+        }
+
+        if (booking.Status != BookingStatus.Booked)
+        {
+            TempData["ErrorMessage"] = "Only bookings with Booked status can be rescheduled";
+
+            return RedirectToAction(nameof(Details), new { id });
+        }
+
+        var model = new EditBookingViewModel
+        {
+            Id = booking.Id,
+            ScheduledAt = booking.ScheduledAt
+        };
+
+        return View(model);
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Edit(int id, EditBookingViewModel model)
+    {
+        if (id != model.Id)
+        {
+            return NotFound();
+        }
+
+        if (!ModelState.IsValid)
+        {
+            return View(model);
+        }
+
+        var booking = await _context.Bookings
+            .FirstOrDefaultAsync(b => b.Id == id); 
+
+        if (booking == null)
+        {
+            return NotFound();
+        }
+
+        if (booking.Status != BookingStatus.Booked)
+        {
+            TempData["ErrorMessage"] = "Only bookings with Booked status can be rescheduled.";
+
+            return RedirectToAction(nameof(Details), new { id });
+        }
+
+        if (!model.ScheduledAt.HasValue)
+        {
+            ModelState.AddModelError(
+                nameof(model.ScheduledAt),
+                "Scheduled date and time is required.");
+
+            return View(model);
+        }
+
+        booking.ScheduledAt = model.ScheduledAt.Value;
+
+        await _context.SaveChangesAsync();
+
+        return RedirectToAction(nameof(Details), new { id });
+    }
+    
 }

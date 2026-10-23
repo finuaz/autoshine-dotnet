@@ -1,4 +1,4 @@
-﻿@Model.Autoshine.Web.Models.Booking
+﻿@model AutoShine.Web.Models.Booking
 
 @{
     ViewData["Title"] = "Booking Details";
@@ -7,6 +7,13 @@
 <h1>Booking Details</h1>
 
 <h2>Booking Information</h2>
+
+@if (TempData["ErrorMessage"] is string errorMessage)
+{
+    <div class="alert alert-warning">
+        @errorMessage
+    </div>
+}
 
 <dl class="row">
     <dt class="col-sm-3">Customer</dt>

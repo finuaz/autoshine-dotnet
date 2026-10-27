@@ -98,4 +98,97 @@ public class VehiclesController : Controller
 
         ViewBag.HasCustomers = customers.Count > 0;
     }
+
+    public async Task<IActionResult> Edit(int? id)
+    {
+        if (id == null)
+        {
+            return NotFound();
+        }
+
+        var vehicle = await _context.Vehicles.AsNoTracking().FirstOrDefaultAsync(v => v.Id == id);
+
+        if (vehicle == null)
+        {
+            return NotFound();
+        }
+
+        return View(vehicle);
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Edit (
+        int id,
+        [Bind("Id,PlateNumber,Brand,Model,Year")]
+        Vehicle submittedVehicle
+        )
+    {
+        if (id != submittedVehicle.Id)
+        {
+            return NotFound();
+        }
+
+        if (string.IsNullOrWhiteSpace(submittedVehicle.PlateNumber))
+        {
+            ModelState.AddModelError(
+                nameof(submittedVehicle.PlateNumber),
+                "Plate number is required.");
+        }
+
+        if (string.IsNullOrWhiteSpace(submittedVehicle.Brand))
+        {
+            ModelState.AddModelError(
+                nameof(submittedVehicle.Brand),
+                "Brand is required.");
+        }
+
+
+        if (string.IsNullOrWhiteSpace(submittedVehicle.Model))
+        {
+            ModelState.AddModelError(
+                nameof(submittedVehicle.Model),
+                "Model is required.");
+        }
+
+        if (submittedVehicle.Year is <= 0)
+        {
+            ModelState.AddModelError(
+                nameof(submittedVehicle.Year),
+                "Year must be greater than zero.");
+        }
+
+        if (!ModelState.IsValid)
+        {
+            return View(submittedVehicle);
+        }
+
+        submittedVehicle.PlateNumber = submittedVehicle.PlateNumber.Trim();
+
+        var vehicle = await _context.Vehicles.FindAsync(id);
+
+        if (vehicle == null)
+        {
+            return NotFound();
+        }
+
+        var plateExists = await _context.Vehicles.AnyAsync(v =>
+            v.Id != id && v.PlateNumber == submittedVehicle.PlateNumber);   
+
+        if (plateExists)
+        {
+            ModelState.AddModelError(nameof(submittedVehicle.PlateNumber), "This plate number already exists.");
+
+            return View(submittedVehicle);
+        }
+
+        vehicle.PlateNumber = submittedVehicle.PlateNumber;
+        vehicle.Brand = submittedVehicle.Brand;
+        vehicle.Model = submittedVehicle.Model;
+        vehicle.Year = submittedVehicle.Year;
+
+        await _context.SaveChangesAsync();
+
+        return RedirectToAction(nameof(Index));
+    }
 }

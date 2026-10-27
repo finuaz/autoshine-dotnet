@@ -1,9 +1,9 @@
 ## WORKSPACE EXECUTIVE SUMMARY (YAML)
-# Generated: 2026-10-19T05:58:01.4900538+07:00
+# Generated: 2026-10-28T04:49:28.7961764+07:00
 # Root: C:\Users\imans\source\repos\finuaz\autoshine-dotnet
 Architecture:
   Type: Backend (C#/.NET)
-  Scale: 44 relevant source files
+  Scale: 45 relevant source files
   Components: 0
   Controllers: 5
   Models: 13
@@ -91,6 +91,8 @@ Architecture:
   Preview: "{  '$schema': 'https://json.schemastore.org/launchsettings.json',  'profiles': {   'http': {    'commandName': 'Project',    'dotnetRunMessages': true..."
 - File: src\AutoShine.Web\ViewModels\CreateBookingViewModel.cs
   Preview: "using Microsoft.AspNetCore.Mvc.Rendering; using Microsoft.AspNetCore.Mvc.ModelBinding; using System.ComponentModel.DataAnnotations; namespace AutoShin..."
+- File: src\AutoShine.Web\ViewModels\EditBookingViewModel.cs
+  Preview: "using System.ComponentModel.DataAnnotations; namespace AutoShine.Web.ViewModels {   public class EditBookingViewModel   {     public int Id { get; set..."
 - File: src\AutoShine.Web\Models\Enums\BookingStatus.cs
   Preview: "namespace AutoShine.Web.Models.Enums; public enum BookingStatus {   Booked,   Waiting,   Washing,   Cleaning,   AdditionalTreatment,   Review,   Payme..."
 - File: src\AutoShine.Web\Models\Enums\PaymentStatus.cs

@@ -18,6 +18,7 @@
             <th>Model</th>
             <th>Year</th>
             <th>Customer</th>
+            <th>Actions</th>
         </tr>
     </thead>
 
@@ -30,6 +31,9 @@
                 <td>@vehicle.Model</td>
                 <td>@vehicle.Year</td>
                 <td>@vehicle.Customer.Name</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@vehicle.Id" class="btn btn-sm btn-primary">Edit</a>
+                </td>
             </tr>
         }
     </tbody>

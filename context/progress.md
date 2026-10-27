@@ -199,3 +199,8 @@ dotnet build
 - BookingsController list/create flow and corresponding views implemented; Booking CRUD remains in progress
 - Database migrated and schema created in MySQL
 - Customers list view functional and ready for CRUD expansion
+
+## Latest Progress Update
+
+- Reviewed the project for an AI connection smoke test. No AI provider integration, AI configuration, or test project is currently present, so an AI connection smoke test could not be run.
+- No application code or configuration was changed.

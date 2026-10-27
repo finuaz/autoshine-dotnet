@@ -118,7 +118,7 @@ public class VehiclesController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit (
+    public async Task<IActionResult> Edit ( 
         int id,
         [Bind("Id,PlateNumber,Brand,Model,Year")]
         Vehicle submittedVehicle

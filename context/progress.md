@@ -6,8 +6,9 @@
 ## Current Position
 
 **Current cycle:** Cycle 1 — Single-project CRUD foundation  
-**Current step:** Step 6 — Booking and Service CRUD (in progress)  
-**Next:** Finish the Service edit flow, then continue Booking CRUD.
+**Current step:** Step 7.1 — Vehicle Edit (in progress)  
+**Current focus:** Complete and verify the Vehicle Edit flow. The previously reported CS0119 correction has been identified but not applied.
+**Next:** Apply `.AsNoTracking()` and `v.Id` in the vehicle query, then build to verify. After Vehicle Edit is complete, proceed to the next Step 7 substep; its specific scope has not been provided.
 
 ## Project State
 
@@ -178,11 +179,19 @@ Cycle 1
   Step 3 ✅
   Step 4 ✅
   Step 5 ✅
-  Step 6
+	Step 6 (previously reported in progress; completion not confirmed in this update)
 	6.1 ✅ List Services
 	6.2 ✅ Create Service
 6.3 ⬅ in progress (complete and verify Edit form; deactivate/reactivate actions exist)
 6.4 Started (Booking list/create exist; continue remaining Booking CRUD)
+  Step 7
+	7.1 ⬅ in progress — Vehicle Edit
+
+## Latest Diagnostic Checkpoint
+
+- **Vehicles edit flow**: `VehiclesController.Edit` has a reported CS0119 caused by using `.AsNoTracking` without invoking the extension method. The query should call `.AsNoTracking()`.
+- The shown query also uses `v.id`; the `Vehicle` model property is `Id`, so use `v.Id`.
+- This diagnostic fix has been identified but not applied; no application code was changed during progress tracking.
 ```
 
 **Last recorded terminal command (result not recorded):**

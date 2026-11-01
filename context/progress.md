@@ -6,13 +6,13 @@
 ## Current Position
 
 **Current cycle:** Cycle 1 — Single-project CRUD foundation  
-**Current step:** Step 7.1 — Vehicle Edit (in progress)  
-**Current focus:** Complete and verify the Vehicle Edit flow. The previously reported CS0119 correction has been identified but not applied.
-**Next:** Apply `.AsNoTracking()` and `v.Id` in the vehicle query, then build to verify. After Vehicle Edit is complete, proceed to the next Step 7 substep; its specific scope has not been provided.
+**Current step:** Step 6 — completed (user-reported)  
+**Current focus:** Continue Cycle 1 with Step 7 — Complete remaining CRUD foundation.
+**Next:** Finish/verify Customer CRUD, Vehicle CRUD, Service CRUD, and Booking foundation cleanup, following the Cycle 1 Step 7 scope in `context/development-roadmap.md`.
 
 ## Project State
 
-The project currently targets **.NET 10** and uses a **single ASP.NET Core MVC/Web project**:
+The project currently targets **.NET 9** and uses a **single ASP.NET Core MVC/Web project**:
 
 ```text
 AutoShine/
@@ -44,6 +44,8 @@ The current Visual Studio Solution Explorer shows the standard MVC project struc
 - project properties / launch settings
 
 ## Completed So Far
+
+The Cycle 1 Step 6 status below is user-reported complete; its detailed substep notes are an earlier snapshot.
 
 ### Cycle 0 — Documentation / Design Freeze
 
@@ -117,7 +119,7 @@ Domain entity models and CRUD scaffolding implemented:
 The application now has a working CRUD read operation for customers with a functional view layer.
 
 #### Step 6
-In progress.
+Completed (user-reported). The detailed substep notes below describe an earlier checkpoint and are retained as history.
 
 - **6.1 — List Services**: Implemented. `ServicesController.Index()` loads services ordered by name and returns them to the view.
 - **6.2 — Create Service**: Implemented. The controller and Create view contain the basic create flow.
@@ -172,22 +174,12 @@ When continuing work:
 ## Current Checkpoint
 
 ```text
-Cycle 0  ✅
-Cycle 1
-  Step 1 ✅
-  Step 2 ✅
-  Step 3 ✅
-  Step 4 ✅
-  Step 5 ✅
-	Step 6 (previously reported in progress; completion not confirmed in this update)
-	6.1 ✅ List Services
-	6.2 ✅ Create Service
-6.3 ⬅ in progress (complete and verify Edit form; deactivate/reactivate actions exist)
-6.4 Started (Booking list/create exist; continue remaining Booking CRUD)
-  Step 7
-	7.1 ⬅ in progress — Vehicle Edit
+Cycle 1 — Single-project CRUD foundation
+  Step 6 ✅ (user-reported complete)
+  Step 7 ⬅ NEXT — Complete remaining CRUD foundation
+```
 
-## Latest Diagnostic Checkpoint
+## Historical Diagnostic Checkpoint — Cycle 1 Vehicle Edit
 
 - **Vehicles edit flow**: `VehiclesController.Edit` has a reported CS0119 caused by using `.AsNoTracking` without invoking the extension method. The query should call `.AsNoTracking()`.
 - The shown query also uses `v.id`; the `Vehicle` model property is `Id`, so use `v.Id`.

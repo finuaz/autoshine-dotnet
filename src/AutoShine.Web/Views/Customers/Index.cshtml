@@ -17,6 +17,7 @@
             <th>Phone Number</th>
             <th>Email</th>
             <th>Created At</th>
+            <th>Actions</th>
         </tr>
     </thead>
 
@@ -28,6 +29,9 @@
                 <td>@customer.PhoneNumber</td>
                 <td>@customer.Email</td>
                 <td>@customer.CreatedAt</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@customer.Id" class="btn btn-sm btn-outline-primary">Edit</a>
+                </td>
             </tr>
         }
     </tbody>

@@ -324,7 +324,7 @@ namespace AutoShine.Web.Migrations
                     b.HasOne("AutoShine.Web.Models.Vehicle", "Vehicle")
                         .WithMany("Bookings")
                         .HasForeignKey("VehicleId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Vehicle");
@@ -335,13 +335,13 @@ namespace AutoShine.Web.Migrations
                     b.HasOne("AutoShine.Web.Models.Booking", "Booking")
                         .WithMany("BookingItems")
                         .HasForeignKey("BookingId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("AutoShine.Web.Models.Service", "Service")
                         .WithMany("BookingItems")
                         .HasForeignKey("ServiceId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Booking");
@@ -354,7 +354,7 @@ namespace AutoShine.Web.Migrations
                     b.HasOne("AutoShine.Web.Models.Booking", "Booking")
                         .WithMany("StatusHistories")
                         .HasForeignKey("BookingId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Booking");
@@ -384,7 +384,7 @@ namespace AutoShine.Web.Migrations
                     b.HasOne("AutoShine.Web.Models.Booking", "Booking")
                         .WithMany("Payments")
                         .HasForeignKey("BookingId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Booking");
@@ -395,7 +395,7 @@ namespace AutoShine.Web.Migrations
                     b.HasOne("AutoShine.Web.Models.Customer", "Customer")
                         .WithMany("Vehicles")
                         .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Customer");

@@ -2,6 +2,23 @@
 
 AutoShine must be built in several cycles. Do not implement the final architecture in one pass.
 
+## UPdate from cycle 2 -- put this higher
+
+Cycle	Main objective
+0		Requirements and architecture
+1		Single-project MVC CRUD foundation
+2		API foundation and hybrid communication
+3		Move data ownership to API; first complete CRUD through HTTP
+4		Application services and business workflow
+5		Kendo UI and API integration
+6		DTOs, FluentValidation and mapping
+7		Dashboard and Dapper
+8		RabbitMQ and background processing
+9		Testing and hardening
+
+The old Cycle 5 multi-project refactoring should be removed. We have decided against it.
+
+
 ## Cycle 0 — Design/documentation freeze
 
 ### Deliverable

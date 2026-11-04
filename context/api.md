@@ -1,5 +1,24 @@
 # AutoShine API Context
 
+## UPdate from cycle 2 -- put this higher
+
+Make sure it reflects these responsibilities:
+
+Web
+- Renders Razor views.
+- Handles UI-specific interactions.
+- Uses typed HttpClient for MVC form workflows.
+- Uses AJAX/fetch for interactive browser components.
+API
+- Owns HTTP endpoints.
+- Validates requests.
+- Invokes application services.
+- Controls access to data.
+- Returns consistent HTTP responses.
+Also preserve the resource definitions you already established: customers, vehicles, services, memberships, bookings, payments and dashboard.
+
+##
+
 The API is the boundary between the Web UI and application services.
 
 ## Principles

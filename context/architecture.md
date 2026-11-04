@@ -8,20 +8,41 @@ It is **not** being presented as microservices.
 
 ### Multi-project means
 
-Several `.csproj` projects live in the same Git repository and are coordinated by one `.sln`:
+Two `.csproj` projects live in the same Git repository and are coordinated by one `.slnx`:
 
 ```text
 AutoShine.sln
-├── AutoShine.Web.csproj
-├── AutoShine.Api.csproj
-├── AutoShine.Services.csproj
-├── AutoShine.Data.csproj
-├── AutoShine.Models.csproj
-├── AutoShine.Messaging.csproj
-└── AutoShine.Worker.csproj
+│
+└── src/
+    ├── AutoShine.Web/
+    │   ├── Controllers/
+    │   ├── Views/
+    │   ├── ViewModels/
+    │   ├── ApiClients/
+    │   └── wwwroot/
+    │
+    └── AutoShine.Api/
+        ├── Controllers/
+        ├── Services/
+        ├── Data/
+        ├── Models/
+        ├── Contracts/
+        ├── Validators/
+        └── Mappings/
 ```
 
 These projects form dependency/build boundaries while remaining one overall application/system.
+
+
+## IMPORTANT!!! -- Update from cycle 2 -- put this higher
+- Exactly two target projects: Web and API.
+- Web communicates with API through HTTP/JSON.
+- Web never accesses MySQL or ApplicationDbContext directly.
+- API owns persistence and business logic.
+- The API's Services, Data and Models are folders, not separate projects.
+- No direct project reference between Web and API.
+- Web uses both server-side HttpClient and browser-side AJAX/fetch.
+
 
 ### Microservices would mean
 

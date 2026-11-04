@@ -2,6 +2,14 @@
 
 This file is the business guardrail. Code must implement these rules rather than inventing new behavior ad hoc.
 
+## Update from cycle 2 -- put this higher
+Subject	                        Rule
+- Booking customer	            Customer is determined through Vehicle; no redundant Booking.CustomerId
+- Service	                    Deactivate rather than hard-delete
+- Historical service data	    Preserve ServiceId, service name snapshot and original price
+- Customer 	                    Archive/deactivate rather than physically delete
+- Customer history	            Preserve vehicles, bookings and payments
+
 ## 1. Customer
 
 - A customer may own multiple vehicles.

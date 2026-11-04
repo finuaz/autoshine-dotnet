@@ -15,8 +15,11 @@ Suggested fields:
 - Phone
 - Email
 - Address
+- Archive/deactivation state (exact representation to be decided; e.g. `IsActive` or `ArchivedAt`)
 - CreatedAt
 - UpdatedAt
+
+Customers are archived/deactivated rather than physically deleted. Archival must preserve their vehicles and all related booking, payment and status history. Archived customers are not offered for new work; reactivation and the exact archive field remain workflow/schema decisions.
 
 ### Vehicle
 
@@ -84,7 +87,6 @@ AdditionalTreatment
 ### Booking
 
 - Id
-- CustomerId
 - VehicleId
 - ScheduledAt
 - Status
@@ -101,13 +103,13 @@ AdditionalTreatment
 - CancelledAt nullable
 - CancellationReason nullable
 
-The booking stores financial snapshots that must not change when catalog or membership data changes later.
+The booking's customer is determined through its required Vehicle relationship (`Booking.Vehicle.Customer`); Booking must not have a redundant `CustomerId`. The booking stores financial snapshots that must not change when catalog or membership data changes later.
 
 ### BookingItem
 
 - Id
 - BookingId
-- ServiceId nullable if the service master record is later deactivated/deleted under a future policy
+- ServiceId (required, non-nullable)
 - ServiceNameSnapshot
 - ServiceTypeSnapshot
 - Quantity
@@ -117,6 +119,8 @@ The booking stores financial snapshots that must not change when catalog or memb
 - ApprovalStatus / approval metadata as designed
 
 `Source` distinguishes originally booked items from items added as additional treatment.
+
+Services may be deactivated to prevent selection for new bookings, but a service referenced by a booking item must not be physically deleted. Configure the service foreign key to restrict/no-action deletion. Retain the service identity and snapshots for historical booking items.
 
 ### Payment
 
@@ -170,7 +174,6 @@ This is initially a simulated notification store for the Worker exercise.
 
 ```text
 Customer 1 ──── * Vehicle
-Customer 1 ──── * Booking
 Customer 1 ──── * CustomerMembership
 MembershipPlan 1 ──── * CustomerMembership
 Vehicle 1 ──── * Booking
@@ -180,6 +183,8 @@ Booking 1 ──── * Payment
 Booking 1 ──── * BookingStatusHistory
 Booking 1 ──── * Notification
 ```
+
+Customer-to-booking access is through `Booking.Vehicle.Customer`, not a direct Booking-to-Customer relationship.
 
 ## Important historical-data rule
 
@@ -195,6 +200,7 @@ At booking/item creation time, store the information needed to preserve the agre
 - total/deposit values
 
 Do not recompute historical booking totals using current master data.
+Preserve booking, payment and booking-status history; customer archival and service deactivation must not remove those records.
 
 ## Data-access strategy
 

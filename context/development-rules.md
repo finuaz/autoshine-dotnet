@@ -103,3 +103,15 @@ For each cycle, definition of done should include:
 - major edge cases considered
 - code boundary is understood
 - documentation matches reality
+
+## Project boundaries
+
+1. Only AutoShine.Web and AutoShine.Api are separate projects.
+2. Web communicates with API through HTTP/JSON.
+3. Web must not access the database directly.
+4. API owns database access and business logic.
+5. No direct project reference between Web and API.
+6. Logical architectural layers may use folders and namespaces
+   inside either project.
+7. Do not create additional projects without an explicit
+   architecture review.

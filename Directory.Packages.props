@@ -1,13 +1,12 @@
 <Project>
   <PropertyGroup>
-    <!-- AutoShine intentionally stays on .NET 9 to stay aligned with Repo 1 and the chosen MySQL provider. -->
-    <TargetFramework>net9.0</TargetFramework>
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
   </PropertyGroup>
   <ItemGroup>
     <!-- EF Core / MySQL -->
     <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="9.0.20" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.20" />
+    <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="10.0.14" />
     <PackageVersion Include="MySqlConnector" Version="2.6.2" />
     <PackageVersion Include="Pomelo.EntityFrameworkCore.MySql" Version="9.0.0" />
     <!-- Reporting / data access -->

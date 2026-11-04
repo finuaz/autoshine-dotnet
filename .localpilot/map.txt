@@ -1,5 +1,5 @@
 ## WORKSPACE EXECUTIVE SUMMARY (YAML)
-# Generated: 2026-10-30T00:50:52.8262286+07:00
+# Generated: 2026-11-02T05:48:41.3650946+07:00
 # Root: C:\Users\imans\source\repos\finuaz\autoshine-dotnet
 Architecture:
   Type: Backend (C#/.NET)
@@ -10,7 +10,7 @@ Architecture:
   Services: 1
 ---
 - File: src\AutoShine.Web\AutoShine.Web.csproj
-  Preview: "<Project Sdk='Microsoft.NET.Sdk.Web'>  <PropertyGroup>   <TargetFramework>net10.0</TargetFramework>   <Nullable>enable</Nullable>   <ImplicitUsings>en..."
+  Preview: "<Project Sdk='Microsoft.NET.Sdk.Web'>  <PropertyGroup>   <TargetFramework>net9.0</TargetFramework>   <NuGetAudit>true</NuGetAudit>   <Nullable>enable<..."
 - File: Autoshine.slnx
   Preview: "<Solution>  <Folder Name='/src/'>   <Project Path='src/AutoShine.Web/AutoShine.Web.csproj' />  </Folder> </Solution> "
 - File: README.md

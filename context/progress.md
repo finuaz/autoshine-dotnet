@@ -5,26 +5,25 @@
 
 ## Current Position
 
-**Current cycle:** Cycle 1 — Single-project CRUD foundation  
-**Current step:** Step 6 — completed (user-reported)  
-**Current focus:** Continue Cycle 1 with Step 7 — Complete remaining CRUD foundation.
-**Next:** Finish/verify Customer CRUD, Vehicle CRUD, Service CRUD, and Booking foundation cleanup, following the Cycle 1 Step 7 scope in `context/development-roadmap.md`.
+**Current cycle:** Cycle 1 — CRUD Foundation  
+**Current step:** Step 8 — Relationship and Data Integrity Review (final part)  
+**Current focus:** Step 8.5 — Verify database integrity.  
+**Next:** Run the build and migration check, then perform the five functional tests. Share any failures, or record that all checks pass.
 
 ## Project State
 
-The project currently targets **.NET 9** and uses a **single ASP.NET Core MVC/Web project**:
+The project currently targets **.NET 9** and uses a Razor Pages Web project:
 
 ```text
 AutoShine/
 ├── context/
 ├── src/
 │   └── AutoShine.Web/
-│       ├── Controllers/
+│       ├── Pages/
 │       ├── Data/
 │       ├── Migrations/
 │       ├── Models/
 │       ├── ViewModels/
-│       ├── Views/
 │       ├── Properties/
 │       ├── wwwroot/
 │       ├── appsettings.Development.json
@@ -32,20 +31,11 @@ AutoShine/
 └── AutoShine.slnx
 ```
 
-The current Visual Studio Solution Explorer shows the standard MVC project structure with:
-
-- `Controllers/HomeController.cs`
-- `Models/ErrorViewModel.cs`
-- `Views/Home/Index.cshtml`
-- `Views/Home/Privacy.cshtml`
-- `Views/Shared/*`
-- `wwwroot/*`
-- `appsettings.Development.json`
-- project properties / launch settings
+The current workspace is a Razor Pages application. Cycle 1 is establishing the CRUD foundation before the architecture is reconsidered.
 
 ## Completed So Far
 
-The Cycle 1 Step 6 status below is user-reported complete; its detailed substep notes are an earlier snapshot.
+Steps 1–5 below are historical implementation notes; the current status is summarized in the checkpoint at the end of this file.
 
 ### Cycle 0 — Documentation / Design Freeze
 
@@ -53,12 +43,12 @@ Completed.
 
 Business direction, main workflow, membership rules, payment separation, messaging purpose, multi-project direction, and cycle-based development approach were agreed before implementation.
 
-### Cycle 1 — Single-project CRUD Foundation
+### Cycle 1 — CRUD Foundation
 
 #### Step 1
 Completed.
 
-The initial ASP.NET Core MVC project was created as the starting application.
+The initial ASP.NET Core Razor Pages project was created as the starting application.
 
 #### Step 2
 Completed.
@@ -112,25 +102,23 @@ Domain entity models and CRUD scaffolding implemented:
 
 - **Domain Models**: Created `Customer`, `Vehicle`, `MembershipPlan`, `CustomerMembership`, `Service`, `Booking`, `BookingItem`, and `Payment` classes in `/Models`.
 - **ApplicationDbContext**: Added DbSet properties for all domain entities.
-- **CustomersController**: Implemented with dependency injection of `ApplicationDbContext` and `Index()` action returning customer list.
-- **Customers/Index.cshtml**: Created view template with table display of customer data (Name, PhoneNumber, Email, CreatedAt).
+- Initial customer list functionality was created.
 - **Database Migration**: Applied `dotnet ef database update` to create schema in MySQL.
 
-The application now has a working CRUD read operation for customers with a functional view layer.
+The application had a working customer read operation at this historical checkpoint.
 
-#### Step 6
-Completed (user-reported). The detailed substep notes below describe an earlier checkpoint and are retained as history.
+#### Steps 1–7
+Completed (user-reported). Customer, Vehicle, Service, and Booking foundations have been implemented; verification remains part of the final review.
 
-- **6.1 — List Services**: Implemented. `ServicesController.Index()` loads services ordered by name and returns them to the view.
-- **6.2 — Create Service**: Implemented. The controller and Create view contain the basic create flow.
-- **6.3 — Edit and deactivate Service**: Partially implemented. The controller has Edit, Deactivate, and Reactivate actions, and the service list exposes those actions. The Edit view currently only exposes the Name field; complete and verify the edit form before marking this substep done. Services are deactivated rather than deleted to retain history.
-- **6.4 — Booking CRUD**: Started. Booking list and create actions/views plus `CreateBookingViewModel` exist. The create flow currently supports selecting a vehicle and active service, scheduling, quantity, and creating a booking item with service snapshots. This is not yet complete Booking CRUD.
+- CRUD foundation is reported complete for Customer, Vehicle, Service, and Booking.
+- Six relationships have been explicitly configured with restrictive deletion rules.
+- Final integrity review is in progress: inspect migrations, constraints, and application behavior.
 
-## Important Boundary
+## Architecture Direction
 
-Do **not** jump to the final architecture yet.
+The next step after Cycle 1 is a retrospective and roadmap redesign, reconsidering the architecture with only Web and API projects.
 
-At this stage AutoShine is intentionally still a **single-project application**. Later cycles will introduce:
+The project is currently a Razor Pages Web application. Future architecture decisions are deferred to the Cycle 1 retrospective, which will reconsider:
 
 - service layer
 - Web API
@@ -174,34 +162,17 @@ When continuing work:
 ## Current Checkpoint
 
 ```text
-Cycle 1 — Single-project CRUD foundation
-  Step 6 ✅ (user-reported complete)
-  Step 7 ⬅ NEXT — Complete remaining CRUD foundation
+Cycle 1 — CRUD Foundation
+  CRUD foundations ✅ (user-reported complete)
+  Relationships ✅ (six explicitly configured with restrictive deletion rules)
+  Step 8.5 ⬅ CURRENT — Verify database integrity
+  Next — Cycle retrospective and roadmap redesign (Web + API only)
 ```
-
-## Historical Diagnostic Checkpoint — Cycle 1 Vehicle Edit
-
-- **Vehicles edit flow**: `VehiclesController.Edit` has a reported CS0119 caused by using `.AsNoTracking` without invoking the extension method. The query should call `.AsNoTracking()`.
-- The shown query also uses `v.id`; the `Vehicle` model property is `Id`, so use `v.Id`.
-- This diagnostic fix has been identified but not applied; no application code was changed during progress tracking.
-```
-
-**Last recorded terminal command (result not recorded):**
-
-```powershell
-dotnet build
-```
-
-**Last known structural action:**
-
-- Domain models defined with proper relationships (Customer, Vehicle, MembershipPlan, Service, Booking, BookingItem, Payment)
-- CustomersController implemented with Index view
-- ServicesController list/create/edit/deactivate/reactivate actions implemented; service Edit view is incomplete
-- BookingsController list/create flow and corresponding views implemented; Booking CRUD remains in progress
-- Database migrated and schema created in MySQL
-- Customers list view functional and ready for CRUD expansion
 
 ## Latest Progress Update
 
-- Reviewed the project for an AI connection smoke test. No AI provider integration, AI configuration, or test project is currently present, so an AI connection smoke test could not be run.
-- No application code or configuration was changed.
+- Reached the final part of Cycle 1, Step 8 — Relationship and Data Integrity Review, at Step 8.5 — Verify database integrity.
+- Six relationships are explicitly configured with restrictive deletion rules; the remaining review covers migrations, constraints, and application behavior.
+- Next action: run the build and migration check, then perform the five functional tests. Record and share any failures, or record when they pass.
+- After verification, complete the Cycle 1 retrospective and redesign the roadmap around only Web and API projects.
+- Progress context only was updated; no application code or configuration was changed.

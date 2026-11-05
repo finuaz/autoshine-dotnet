@@ -7,7 +7,7 @@
 
 **Current cycle:** Cycle 2 — API Foundation  
 **Current step:** Step 2.4 — Run both applications  
-**Current focus:** Remove the template `WeatherForecast` endpoint, then run Web and API together.  
+**Current focus:** Run Web and API together.  
 **Next:** Step 2.5 — Typed `HttpClient` integration.
 
 ## Project State
@@ -159,7 +159,7 @@ Cycle 2 — API Foundation
 	API health endpoint ✅
 	OpenAPI generation ✅
 	Separate ports verified ✅
-	Remove template WeatherForecast endpoint ⬅ PENDING
+	Template WeatherForecast files deleted ✅
 	Run Web and API together ⬅ PENDING
   Next — Step 2.5: Typed HttpClient integration
 ```
@@ -168,6 +168,7 @@ Cycle 2 — API Foundation
 
 - Passed the API health endpoint and OpenAPI generation checks.
 - Verified that Web and API are configured on separate ports.
-- Pending: remove the template `WeatherForecast` endpoint and run Web and API simultaneously.
+- Deleted the template `WeatherForecast` files.
+- Pending: run Web and API simultaneously.
 - Next: integrate a typed `HttpClient` in Step 2.5.
 - Progress context only was updated; no application code or configuration was changed.

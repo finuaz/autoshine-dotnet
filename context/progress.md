@@ -5,33 +5,25 @@
 
 ## Current Position
 
-**Current cycle:** Cycle 1 — CRUD Foundation  
-**Current step:** Step 8 — Relationship and Data Integrity Review (final part)  
-**Current focus:** Step 8.5 — Verify database integrity.  
-**Next:** Run the build and migration check, then perform the five functional tests. Share any failures, or record that all checks pass.
+**Current cycle:** Cycle 2 — API Foundation  
+**Current step:** Step 2.4 — Run both applications  
+**Current focus:** Remove the template `WeatherForecast` endpoint, then run Web and API together.  
+**Next:** Step 2.5 — Typed `HttpClient` integration.
 
 ## Project State
 
-The project currently targets **.NET 9** and uses a Razor Pages Web project:
+The solution targets **.NET 10** and contains the Razor Pages Web project and the API project:
 
 ```text
 AutoShine/
 ├── context/
 ├── src/
-│   └── AutoShine.Web/
-│       ├── Pages/
-│       ├── Data/
-│       ├── Migrations/
-│       ├── Models/
-│       ├── ViewModels/
-│       ├── Properties/
-│       ├── wwwroot/
-│       ├── appsettings.Development.json
-│       └── ...
+│   └── AutoShine.Web/      # Razor Pages application
+│   └── AutoShine.Api/      # API application
 └── AutoShine.slnx
 ```
 
-The current workspace is a Razor Pages application. Cycle 1 is establishing the CRUD foundation before the architecture is reconsidered.
+Cycle 1 CRUD work is historical; the current work is establishing the Cycle 2 Web/API boundary.
 
 ## Completed So Far
 
@@ -162,17 +154,20 @@ When continuing work:
 ## Current Checkpoint
 
 ```text
-Cycle 1 — CRUD Foundation
-  CRUD foundations ✅ (user-reported complete)
-  Relationships ✅ (six explicitly configured with restrictive deletion rules)
-  Step 8.5 ⬅ CURRENT — Verify database integrity
-  Next — Cycle retrospective and roadmap redesign (Web + API only)
+Cycle 2 — API Foundation
+  Step 2.4 — Run both applications
+	API health endpoint ✅
+	OpenAPI generation ✅
+	Separate ports verified ✅
+	Remove template WeatherForecast endpoint ⬅ PENDING
+	Run Web and API together ⬅ PENDING
+  Next — Step 2.5: Typed HttpClient integration
 ```
 
 ## Latest Progress Update
 
-- Reached the final part of Cycle 1, Step 8 — Relationship and Data Integrity Review, at Step 8.5 — Verify database integrity.
-- Six relationships are explicitly configured with restrictive deletion rules; the remaining review covers migrations, constraints, and application behavior.
-- Next action: run the build and migration check, then perform the five functional tests. Record and share any failures, or record when they pass.
-- After verification, complete the Cycle 1 retrospective and redesign the roadmap around only Web and API projects.
+- Passed the API health endpoint and OpenAPI generation checks.
+- Verified that Web and API are configured on separate ports.
+- Pending: remove the template `WeatherForecast` endpoint and run Web and API simultaneously.
+- Next: integrate a typed `HttpClient` in Step 2.5.
 - Progress context only was updated; no application code or configuration was changed.

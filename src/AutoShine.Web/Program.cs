@@ -1,5 +1,6 @@
 using AutoShine.Web.Data;
 using Microsoft.EntityFrameworkCore;
+using AutoShine.Web.ApiClients;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,17 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddHttpClient<IAutoShineApiClient, AutoShineApiClient> (client =>
+{
+    var apiBaseUrl = builder.Configuration["Api:BaseUrl"];
+
+    if (string.IsNullOrEmpty(apiBaseUrl))
+    {
+        throw new InvalidOperationException("API base URL is not configured.");
+    }
+    client.BaseAddress = new Uri(apiBaseUrl);
+});
 
 var app = builder.Build();
 

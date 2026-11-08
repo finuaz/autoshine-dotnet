@@ -6,9 +6,9 @@
 ## Current Position
 
 **Current cycle:** Cycle 2 — API Foundation  
-**Current step:** Step 2.4 — Run both applications  
-**Current focus:** Run Web and API together.  
-**Next:** Step 2.5 — Typed `HttpClient` integration.
+**Current step:** Step 2.5 — Server-side HTTP integration  
+**Current focus:** Implement the typed client interface/response model and register/configure `HttpClient`.  
+**Next:** Add an MVC controller calling the API, then a Razor diagnostic page displaying API status.
 
 ## Project State
 
@@ -20,7 +20,7 @@ AutoShine/
 ├── src/
 │   └── AutoShine.Web/      # Razor Pages application
 │   └── AutoShine.Api/      # API application
-└── AutoShine.slnx
+└── AutoShine.slnx	
 ```
 
 Cycle 1 CRUD work is historical; the current work is establishing the Cycle 2 Web/API boundary.
@@ -155,20 +155,19 @@ When continuing work:
 
 ```text
 Cycle 2 — API Foundation
-  Step 2.4 — Run both applications
-	API health endpoint ✅
-	OpenAPI generation ✅
-	Separate ports verified ✅
-	Template WeatherForecast files deleted ✅
-	Run Web and API together ⬅ PENDING
-  Next — Step 2.5: Typed HttpClient integration
+	Step 2.5 — Server-side HTTP integration ⬅ IN PROGRESS
+	1. API health endpoint and OpenAPI — VERIFIED
+	2. Typed client interface and response model — IMPLEMENT NOW
+	3. HttpClient registration and configuration — IMPLEMENT NOW
+	4. MVC controller calling the API — NEXT
+	5. Razor diagnostic page displaying API status — PENDING
 ```
 
 ## Latest Progress Update
 
-- Passed the API health endpoint and OpenAPI generation checks.
-- Verified that Web and API are configured on separate ports.
-- Deleted the template `WeatherForecast` files.
-- Pending: run Web and API simultaneously.
-- Next: integrate a typed `HttpClient` in Step 2.5.
+- Step 2.5 — Server-side HTTP integration is in progress.
+- Verified: API health endpoint and OpenAPI.
+- Implement now: typed client interface/response model and `HttpClient` registration/configuration.
+- Next: MVC controller calling the API.
+- Pending: Razor diagnostic page displaying API status.
 - Progress context only was updated; no application code or configuration was changed.

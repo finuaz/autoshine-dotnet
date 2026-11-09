@@ -7,8 +7,8 @@
 
 **Current cycle:** Cycle 2 — API Foundation  
 **Current step:** Step 2.5 — Server-side HTTP integration  
-**Current focus:** Implement the typed client interface/response model and register/configure `HttpClient`.  
-**Next:** Add an MVC controller calling the API, then a Razor diagnostic page displaying API status.
+**Current focus:** Troubleshoot the API base URL configuration; Step 2.5 is blocked until configuration is resolved.  
+**Next:** Verify the MVC diagnostic page after resolving the base URL configuration.
 
 ## Project State
 
@@ -155,19 +155,19 @@ When continuing work:
 
 ```text
 Cycle 2 — API Foundation
-	Step 2.5 — Server-side HTTP integration ⬅ IN PROGRESS
+	Step 2.5 — Server-side HTTP integration ⬅ BLOCKED BY CONFIGURATION
 	1. API health endpoint and OpenAPI — VERIFIED
-	2. Typed client interface and response model — IMPLEMENT NOW
-	3. HttpClient registration and configuration — IMPLEMENT NOW
-	4. MVC controller calling the API — NEXT
-	5. Razor diagnostic page displaying API status — PENDING
+	2. Typed client interface and response model — IMPLEMENTED
+	3. Typed HttpClient registration — IMPLEMENTED
+	4. API base URL configuration — TROUBLESHOOTING
+	5. MVC diagnostic page — NOT YET VERIFIED
 ```
 
 ## Latest Progress Update
 
-- Step 2.5 — Server-side HTTP integration is in progress.
+- Step 2.5 — Server-side HTTP integration is blocked by configuration.
+- Implemented: typed client interface/response model and typed `HttpClient` registration.
 - Verified: API health endpoint and OpenAPI.
-- Implement now: typed client interface/response model and `HttpClient` registration/configuration.
-- Next: MVC controller calling the API.
-- Pending: Razor diagnostic page displaying API status.
+- Troubleshooting: API base URL configuration.
+- Not yet verified: MVC diagnostic page.
 - Progress context only was updated; no application code or configuration was changed.

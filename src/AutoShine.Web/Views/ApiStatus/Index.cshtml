@@ -1,0 +1,26 @@
+﻿@model AutoShine.Web.ViewModels.ApiStatusViewModel
+
+@{
+    ViewData["Title"] = "API Status";
+}
+
+<h1>API Status</h1>
+
+@if (Model.IsAvailable)
+{
+    <div class="alert alert-success" role="status">
+        <strong>Connected!</strong>
+        AutoShine API reports: @Model.Status
+    </div>
+}
+else
+{
+    <div class="alert alert-danger" role="alert">
+        <strong>Unavailable!</strong>
+        @Model.ErrorMessage
+    </div>
+}
+
+<a asp-action="Index" class="btn btn-outline-primary">
+    Check Again
+</a>
